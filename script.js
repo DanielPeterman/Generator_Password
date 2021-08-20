@@ -74,6 +74,30 @@ function determineUppercase(){
     return uppercaseCheck;
 }
 
+//Special Characters Function
+function determineSpecial(){
+  specialCheck = prompt("Do you want special characters in your password? \n(Yes or No)");
+    specialCheck = specialCheck.toLowerCase();
+
+    if (specialCheck === null || specialCheck === ""){
+      alert("Yes or No");
+      determineSpecial();
+
+    }else if (specialCheck === "yes" || specialCheck ==="y"){
+      specialCheck = true;
+      return specialCheck;
+
+    }else if (specialCheck === "no" || specialCheck ==="n"){
+      specialCheck = false;
+      return specialCheck;
+    
+    }else {
+      alert("Yes or No");
+      determineSpecial();
+    }
+    return specialCheck;
+}
+
 // Write password to the #password input
 function writePassword() {
   var password1 = "";
