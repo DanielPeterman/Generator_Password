@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numberChar = "0123456789";
-var specialChar = "!@#$%^&*()_-+={}[];:'`~<,>.?/|"
+var specialChar = "!@#$%^&*()_{}[];:'<,>.?/|"
 var passwordLength;
 var uppercaseCheck;
 var numberCheck;
@@ -12,7 +12,7 @@ var specialCheck;
 
 //Password Length
 function determineLength(){
-  passwordLength = prompt("How many characters would you like your password to be (between 8-128 characters): ");
+  passwordLength = prompt("How many characters long would you like your password to be (between 8-128 characters): ");
 
     if (passwordLength<8){
       alert("Password length must be a number between 8-128 characters");
@@ -23,31 +23,10 @@ function determineLength(){
     }else if (isNaN(passwordLength)){
       alert("Password length must be a number between 8-128 characters");
       determineLength();
-    return passwordLength;
-}
-
-//Numbers Function
-function determineNumbers(){
-  numberCheck = prompt("Do you want numbers in your password? \n(Yes or No)");
-    numberCheck = numberCheck.toLowerCase();
-
-    if (numberCheck === null || numberCheck === ""){
-      alert("Yes or No");
-      determineNumbers();
-
-    }else if (numberCheck === "yes" || numberCheck ==="y"){
-      numberCheck = true;
-      return numberCheck;
-
-    }else if (numberCheck === "no" || numberCheck ==="n"){
-      numberCheck = false;
-      return numberCheck;
-    
-    }else {
-      alert("Yes or No");
-      determineNumbers();
+    }else{
+    alert("The following prompts will ask you what characters you would like in your randomly generated password.");
     }
-    return numberCheck;
+    return passwordLength;
 }
 
 //Uppercase Function
@@ -74,6 +53,30 @@ function determineUppercase(){
     return uppercaseCheck;
 }
 
+//Numbers Function
+function determineNumbers(){
+  numberCheck = prompt("Do you want numbers in your password? \n(Yes or No)");
+    numberCheck = numberCheck.toLowerCase();
+
+    if (numberCheck === null || numberCheck === ""){
+      alert("Yes or No");
+      determineNumbers();
+
+    }else if (numberCheck === "yes" || numberCheck ==="y"){
+      numberCheck = true;
+      return numberCheck;
+
+    }else if (numberCheck === "no" || numberCheck ==="n"){
+      numberCheck = false;
+      return numberCheck;
+    
+    }else {
+      alert("Yes or No");
+      determineNumbers();
+    }
+    return numberCheck;
+}
+
 //Special Characters Function
 function determineSpecial(){
   specialCheck = prompt("Do you want special characters in your password? \n(Yes or No)");
@@ -96,6 +99,50 @@ function determineSpecial(){
       determineSpecial();
     }
     return specialCheck;
+}
+
+//Generates Password
+function generatePassword(){
+  determineLength();
+  console.log(passwordLength);
+  determineUppercase();
+  console.log(uppercaseCheck);
+  determineNumbers();
+  console.log(numberCheck);
+  determineSpecial();
+  console.log(specialCheck);
+
+var characters = lowercaseChar;
+var password = "";
+if (uppercaseCheck && numberCheck && specialCheck){
+  characters += uppercaseChar + numberChar + specialChar;
+
+}else if (uppercaseCheck && numberCheck){
+  characters += uppercaseChar + numberChar;
+
+}else if (numberCheck && specialCheck){
+  characters += numberChar + specialChar;
+
+}else if (uppercaseCheck && specialCheck){
+  characters += uppercaseChar + specialChar;
+
+}else if (uppercaseCheck){
+  characters += uppercaseChar;
+
+}else if(numberCheck){
+  characters += numberChar;
+
+}else if (specialCheck){
+  characters += specialChar;
+
+}else{
+  characters === lowercaseChar;
+}
+
+for(var i = 0; i < passwordLength; i++){
+    password += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return password;
 }
 
 // Write password to the #password input
