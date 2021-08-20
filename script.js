@@ -1,4 +1,5 @@
 // Assignment Code
+//Variables
 var generateBtn = document.querySelector("#generate");
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -9,9 +10,9 @@ var uppercaseCheck;
 var numberCheck;
 var specialCheck;
 
-//First Function
+//Password Length
 function determineLength(){
-  passwordLength = prompt("Choose how many characters long you'd like your password to be (between 8-128 characters): ");
+  passwordLength = prompt("How many characters would you like your password to be (between 8-128 characters): ");
 
     if (passwordLength<8){
       alert("Password length must be a number between 8-128 characters");
@@ -25,8 +26,33 @@ function determineLength(){
     return passwordLength;
 }
 
+//Numbers Function
+function determineNumbers(){
+  numberCheck = prompt("Do you want numbers in your password? \n(Yes or No)");
+    numberCheck = numberCheck.toLowerCase();
+
+    if (numberCheck === null || numberCheck === ""){
+      alert("Yes or No");
+      determineNumbers();
+
+    }else if (numberCheck === "yes" || numberCheck ==="y"){
+      numberCheck = true;
+      return numberCheck;
+
+    }else if (numberCheck === "no" || numberCheck ==="n"){
+      numberCheck = false;
+      return numberCheck;
+    
+    }else {
+      alert("Yes or No");
+      determineNumbers();
+    }
+    return numberCheck;
+}
+
+//Uppercase Function
 function determineUppercase(){
-  uppercaseCheck = prompt("Do you want to include uppercase letters in your password? \n(Yes or No)");
+  uppercaseCheck = prompt("Do you want uppercase letters in your password? \n(Yes or No)");
     uppercaseCheck = uppercaseCheck.toLowerCase();
 
     if (uppercaseCheck === null || uppercaseCheck === ""){
