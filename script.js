@@ -101,7 +101,7 @@ function determineSpecial(){
     return specialCheck;
 }
 
-//Generates Password
+//Generates password
 function generatePassword(){
   determineLength();
   console.log(passwordLength);
