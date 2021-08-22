@@ -14,7 +14,7 @@ Table of Contents
 
 # Description
 
-This project is password generator built from starter html/css  and a scratch javascript file. I built this project to test my skills in javascript from the previous weeks lecture.
+This project is a password generator built from starter HTML/CSS  and a scratch Javascript file. I built this project to test my skills in Javascript from the previous weeks lecture.
 
 # Installation
 
